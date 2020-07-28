@@ -4,9 +4,6 @@ import random
 
 @on_command('roll', aliases=('dice', 'random'))
 async def roll(session: CommandSession):
-    print(session.state)
-    # if len(session.state) != 2:
-    #     session.finish("请输入正确的骰点参数") 
     n_dices = session.get('n_dices')
     n_faces = session.get('n_faces')
 
@@ -25,8 +22,7 @@ async def _(session: CommandSession):
     if stripped_arg:
         splited = stripped_arg.lower().split('d')
 
-        print(splited)
-        if len(splited) == 2:
+        if splited[0] != "" and splited[1] != "":
             if int(splited[0]) > 0 and int(splited[1]) > 0:
                 session.state['n_dices'] = int(splited[0])
                 session.state['n_faces'] = int(splited[1])
