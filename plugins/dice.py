@@ -5,12 +5,8 @@ import random
 @on_command('roll', aliases=('dice', 'random'))
 async def roll(session: CommandSession):
     print(session.state)
-    # if session.state['n_dices'] is None and session.state['n_faces'] is None:
-    #     session.finish('请输入正确的骰子参数')
-    # if session.state['n_dices'] is None:
-    #     session.finish('请指定骰子个数')
-    # if session.state['n_faces'] is None:
-    #     session.finish('请指定骰子种类')
+    # if len(session.state) != 2:
+    #     session.finish("请输入正确的骰点参数") 
     n_dices = session.get('n_dices')
     n_faces = session.get('n_faces')
 
@@ -39,7 +35,7 @@ async def _(session: CommandSession):
                 session.finish('请指定正确的骰子种类')
         else:
             session.finish('请输入完整的骰点参数')
-    return
+        return
 
     if not stripped_arg:
         session.finish('请输入骰点参数')
