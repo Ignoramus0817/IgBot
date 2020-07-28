@@ -2,7 +2,7 @@ from nonebot import on_command, CommandSession
 import random
 
 
-@on_command('!roll', aliases=('dice', 'random'))
+@on_command('roll', aliases=('dice', 'random'))
 async def roll(session: CommandSession):
     n_dices = session.get('n_dices', prompt='请指定骰子个数')
     n_faces = session.get('n_faces', prompt='请指定骰子种类')
