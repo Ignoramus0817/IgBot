@@ -25,6 +25,7 @@ async def _(session: CommandSession):
     if stripped_arg:
         splited = stripped_arg.lower().split('d')
 
+        print(splited)
         if len(splited) == 2:
             if int(splited[0]) > 0 and int(splited[1]) > 0:
                 session.state['n_dices'] = int(splited[0])
