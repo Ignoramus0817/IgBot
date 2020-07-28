@@ -11,8 +11,7 @@ async def roll(session: CommandSession):
     for i in range(n_dices):
         res.append(random.randint(1, n_faces))
 
-    res = " | ".join(res)
-    print(res)
+    res = " | ".join('%s' % id for id in res)
     await session.send(res)
 
 
