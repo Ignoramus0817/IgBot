@@ -27,16 +27,12 @@ async def _(session: CommandSession):
                 session.state['n_dices'] = int(splited[0])
                 session.state['n_faces'] = int(splited[1])
             elif int(splited[0]) <= 0 and int(splited[1]) > 0:
-                session.send('请指定正确的骰子个数', at_sender=True)
-                session.finish()
+                session.finish('请指定正确的骰子个数')
             else:
-                session.send('请指定正确的骰子种类', at_sender=True)
-                session.finish()
+                session.finish('请指定正确的骰子种类')
         else:
-            session.send('请输入完整的骰点参数', at_sender=True)
-            session.finish()
+            session.finish('请输入完整的骰点参数')
         return
 
     if not stripped_arg:
-        session.send('请输入骰点参数', at_sender=True)
-        session.finish()
+        session.finish('请输入骰点参数')
