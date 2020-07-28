@@ -4,8 +4,14 @@ import random
 
 @on_command('roll', aliases=('dice', 'random'))
 async def roll(session: CommandSession):
-    n_dices = session.get('n_dices', prompt='请指定骰子个数')
-    n_faces = session.get('n_faces', prompt='请指定骰子种类')
+    if !session.state['n_dices'] and !session.state['n_faces']:
+        session.finish('请输入正确的骰子参数')
+    if !session.state['n_dices']:
+        session.finish('请指定骰子个数')
+    if !session.state['n_faces']:
+        session.finish('请指定骰子种类')
+    n_dices = session.get('n_dices')
+    n_faces = session.get('n_faces')
 
     res = []
     for i in range(n_dices):
