@@ -11,6 +11,7 @@ async def roll(session: CommandSession):
     for i in range(n_dices):
         res.append(random.randint(1, n_faces))
 
+    print(res)
     await session.send(res)
 
 
@@ -25,11 +26,11 @@ async def _(session: CommandSession):
         if splited[0] != 0 and splited[1] != 0:
             session.state['n_dices'] = int(splited[0])
             session.state['n_faces'] = int(splited[1])
-            return
         elif splited[0] == 0 and splited[1] != 0:
             session.pause('请指定骰子个数')
         else:
             session.pause('请指定骰子种类')
+    return
 
     if not stripped_arg:
         session.pause('请输入骰点参数')
