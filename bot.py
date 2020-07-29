@@ -3,7 +3,7 @@ from os import path
 
 import config
 
-# test again
+# test agai
 if __name__ == '__main__':
     nonebot.init(config)
     nonebot.load_plugins(
