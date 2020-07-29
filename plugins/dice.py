@@ -4,6 +4,7 @@ import random
 
 @on_command('rd', aliases=('dice', 'random'))
 async def roll(session: CommandSession):
+    print(session.state)
     n_dices = session.get('n_dices')
     n_faces = session.get('n_faces')
 
@@ -22,7 +23,7 @@ async def _(session: CommandSession):
     if not stripped_arg:
         session.state['n_dices'] = 1
         session.state['n_faces'] = 100
-        await session.send('未指定投点数，默认1d100')
+        await session.send('未指定投点数，默认1d100，要修改默认值，请使用')
         return
 
     if stripped_arg:
