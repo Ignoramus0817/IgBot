@@ -2,7 +2,7 @@ from nonebot import on_command, CommandSession
 import random
 
 
-@on_command('rd', aliases=('dice', 'random'))
+@on_command('rd', aliases=('dice', 'roll'))
 async def roll(session: CommandSession):
     n_dices = session.get('n_dices')
     n_faces = session.get('n_faces')
@@ -17,7 +17,6 @@ async def roll(session: CommandSession):
 
 @roll.args_parser
 async def _(session: CommandSession):
-    print(session.state)
     stripped_arg = session.current_arg_text.strip()
 
     if not stripped_arg:
