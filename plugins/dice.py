@@ -5,7 +5,7 @@ DEFAULT_DICE = 100
 
 
 # roll common dices
-@on_command('rd', aliases=('dice', 'roll'))
+@on_command('rd', aliases=('random', 'roll'))
 async def roll(session: CommandSession):
     n_dices = session.get('n_dices')
     n_faces = session.get('n_faces')
