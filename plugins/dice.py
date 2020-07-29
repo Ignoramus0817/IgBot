@@ -1,6 +1,7 @@
 from nonebot import on_command, CommandSession
 import random
 
+#default dice
 DEFAULT_DICE = 100
 
 
