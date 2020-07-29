@@ -3,6 +3,7 @@ import random
 
 DEFAULT_DICE = 100
 
+
 # roll common dices
 @on_command('rd', aliases=('dice', 'roll'))
 async def roll(session: CommandSession):
@@ -42,6 +43,7 @@ async def _(session: CommandSession):
             session.finish('请输入完整的骰点参数')
         return
 
+
 # modify default dices
 @on_command('dice', aliases=('md', 'cd'))
 async def modifyDice(session: CommandSession):
@@ -49,7 +51,8 @@ async def modifyDice(session: CommandSession):
 
     await session.send('已修改默认骰子为d%d' % DEFAULT_DICE)
 
-@dice.args_parser
+
+@modifyDice.args_parser
 async def _(session: CommandSession):
     raw_command = session.event['raw_message']
     stripped_arg = session.current_arg_text.strip()
@@ -57,7 +60,7 @@ async def _(session: CommandSession):
     if(raw_command[0] != '!' and raw_command[0] != '！'):
         session.finish('修改默认骰子需要以!或！作为命令头')
 
-    if(!stripped_arg.isdigit()):
+    if(stripped_arg.isdigit() is False):
         session.finish('请指定一个数值(1-100)作为参数')
 
     n_default = int(stripped_arg)
