@@ -144,13 +144,7 @@ async def _(session: CommandSession):
     stripped_arg = session.current_arg_text.strip()
 
     # raw_command = re.sub(r'\[*\]\t', '', raw_command)
-    count = 0
-    for i in raw_command:
-        if(i == ']'):
-            break
-        count += 1
-    raw_command = raw_command.replace(raw_command[0], '', count)
-    print(count)
+    raw_command = raw_command.replace(r'\[*\]\t', '', 1)
     print(raw_command)
 
     if(raw_command[0] != '!' and raw_command[0] != '！'):
