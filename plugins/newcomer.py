@@ -5,7 +5,7 @@ from nonebot import on_notice, NoticeSession
 async def _(session: NoticeSession):
     greeting_text = "大家好， 这里是IgDice Bot，以下是使用说明。"
     comment_text = "【这里是声明】 \n\n " + \
-                   "1. 帮助文本中，()代表参数，[]代表可选内容。 \n\n" + \
+                   "1. 说明文本中，()代表参数，[]代表可选内容。 \n\n" + \
                    "2. 除单独说明的命令外，其余命令均可用   /   !   ／   ！   .   作为命令头。"
 
     help_text = "【这里是正文】 \n\n " + \
