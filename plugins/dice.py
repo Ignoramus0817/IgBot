@@ -48,6 +48,8 @@ async def _(session: CommandSession):
 # modify default dices
 @on_command('dice', aliases=('md', 'cd'))
 async def modifyDice(session: CommandSession):
+
+    # change gloabal variable
     global DEFAULT_DICE
     DEFAULT_DICE = int(session.get('default_dice_faces'))
 
