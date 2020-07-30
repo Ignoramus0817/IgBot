@@ -79,7 +79,7 @@ async def _(session: CommandSession):
                 if int(splited[0]) > 0 and int(splited[1]) > 0 and int(splited[1]) <= 100:
                     session.state['n_dices'] = int(splited[0])
                     session.state['n_faces'] = int(splited[1])
-                elif int(splited[0]) <= 0 and int(splited[1]) > 0:
+                elif int(splited[0]) <= 0:
                     session.finish('请指定正确的骰子数目')
                 else:
                     session.finish('请指定正确的骰子种类')
@@ -94,12 +94,12 @@ async def _(session: CommandSession):
             extra_dice_arg = dice_list[1].strip().split('d')
 
             # base dice arguments
-            if base_dice_arg[0] != "" and base_dice_arg[1] != "":
+            if len(base_dice_arg) == 2 and base_dice_arg[0].isdigit() and base_dice_arg[1].isdigit:
                 if int(base_dice_arg[0]) > 0 and \
                    (int(base_dice_arg[1]) > 0 and int(base_dice_arg[1]) <= 100):
                     session.state['n_dices'] = int(base_dice_arg[0])
                     session.state['n_faces'] = int(base_dice_arg[1])
-                elif int(base_dice_arg[0]) <= 0 and (int(base_dice_arg[1]) > 0 and int(base_dice_arg[1]) <= 100):
+                elif int(base_dice_arg[0]) <= 0:
                     session.finish('请指定正确的基准骰子数目')
                 else:
                     session.finish('请指定正确的基准骰子种类')
@@ -120,7 +120,7 @@ async def _(session: CommandSession):
                     if int(extra_dice_arg[0]) > 0 and (int(extra_dice_arg[1]) > 0 and int(extra_dice_arg[1]) <= 100):
                         session.state['n_extra_dices'] = int(extra_dice_arg[0])
                         session.state['n_extra_faces'] = int(extra_dice_arg[1])
-                    elif int(extra_dice_arg[0]) <= 0 and (int(extra_dice_arg[1]) > 0 and int(extra_dice_arg[1]) <= 100):
+                    elif int(extra_dice_arg[0]) <= 0:
                         session.finish('请指定正确的附加骰子数目')
                     else:
                         session.finish('请指定正确的附加骰子种类')
