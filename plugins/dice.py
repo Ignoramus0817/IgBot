@@ -104,14 +104,12 @@ async def _(session: CommandSession):
                 session.finish('请输入完整的基准骰子参数')
 
             # extra dice or value
-            if extra_dice_arg[0] == "" and extra_dice_arg[1] != "":
-                if extra_dice_arg[1].isdigit() and (int(extra_dice_arg[1]) > 0 and int(extra_dice_arg[1]) <= 100):
-                    session.state['extra_value'] = extra_dice_arg[1]
-                else:
-                    session.finish('请输入正确的加值数目')
-            elif extra_dice_arg[0] != "" and extra_dice_arg[1] == "":
-                if extra_dice_arg[0].isdigit() and (int(extra_dice_arg[0]) > 0 and int(extra_dice_arg[0]) <= 100):
-                    session.state['extra_value'] = extra_dice_arg[0]
+            if len(extra_dice_arg) == 1:
+                if(extra_dice_arg[0].isdigit()):
+                    if int(extra_dice_arg[0]) > 0 and int(extra_dice_arg[0]) <= 100:
+                        session.state['extra_value'] = int(extra_dice_arg[0])
+                    else:
+                        session.finish('请输入正确的加值数目')
                 else:
                     session.finish('请输入正确的加值数目')
             else:
