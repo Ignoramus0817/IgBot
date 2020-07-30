@@ -47,14 +47,12 @@ async def _(session: CommandSession):
     stripped_arg = session.current_arg_text.strip()
     session.state['hd'] = False
 
-    raw_command = re.sub(r'\[*\]\t', '', raw_command)
-    print(raw_command)
     # hidden dice or not
     raw_command = raw_command.replace(raw_command[0], '', 1)
     if re.search('hd', raw_command) or re.search('rhd', raw_command):
         session.state['hd'] = True
 
-    # use default dice
+    # use default dice`
     if not stripped_arg:
         session.state['n_dices'] = 1
         session.state['n_faces'] = DEFAULT_DICE
@@ -145,7 +143,14 @@ async def _(session: CommandSession):
     raw_command = session.event['raw_message']
     stripped_arg = session.current_arg_text.strip()
 
-    raw_command = re.sub(r'\[*\]\t', '', raw_command)
+    # raw_command = re.sub(r'\[*\]\t', '', raw_command)
+    count = 0
+    for i in raw_command:
+        if(i == ']'):
+            break
+        count += 1
+    raw_command = raw_command.replace(raw_command[0], '', count)
+
     print(raw_command)
     if(raw_command[0] != '!' and raw_command[0] != '！'):
         session.finish('修改默认骰子需要以!或！作为命令头')
