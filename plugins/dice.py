@@ -25,7 +25,6 @@ async def _(session: CommandSession):
 
     if not stripped_arg:
         session.state['n_dices'] = 1
-        print(DEFAULT_DICE)
         session.state['n_faces'] = DEFAULT_DICE
         await session.send('未指定投点数，使用默认骰子1d%d' % DEFAULT_DICE)
         return
