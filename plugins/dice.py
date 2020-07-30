@@ -78,7 +78,7 @@ async def _(session: CommandSession):
         if not plus_list:
             splited = stripped_arg.lower().split('d')
             if len(splited) == 2 and splited[0].isdigit() and splited[1].isdigit():
-                if int(splited[0]) > 0 and int(splited[1]) > 0 and int(splited[1]) <= 100:
+                if int(splited[0]) > 0 and splited[0] < 10 and int(splited[1]) > 0 and int(splited[1]) <= 100:
                     session.state['n_dices'] = int(splited[0])
                     session.state['n_faces'] = int(splited[1])
                 elif int(splited[0]) <= 0:
@@ -97,8 +97,8 @@ async def _(session: CommandSession):
 
             # base dice arguments
             if len(base_dice_arg) == 2 and base_dice_arg[0].isdigit() and base_dice_arg[1].isdigit:
-                if int(base_dice_arg[0]) > 0 and \
-                   (int(base_dice_arg[1]) > 0 and int(base_dice_arg[1]) <= 100):
+                if int(base_dice_arg[0]) > 0 and int(base_dice_arg[0]) < 10 and \
+                   int(base_dice_arg[1]) > 0 and int(base_dice_arg[1]) <= 100:
                     session.state['n_dices'] = int(base_dice_arg[0])
                     session.state['n_faces'] = int(base_dice_arg[1])
                 elif int(base_dice_arg[0]) <= 0:
@@ -125,7 +125,8 @@ async def _(session: CommandSession):
                 elif(extra_dice_arg[1] == ''):
                     session.finish('请指定正确的附加骰子种类')
                 elif extra_dice_arg[0].isdigit() and extra_dice_arg[1].isdigit():
-                    if int(extra_dice_arg[0]) > 0 and (int(extra_dice_arg[1]) > 0 and int(extra_dice_arg[1]) <= 100):
+                    if int(extra_dice_arg[0]) > 0 and int(extra_dice_arg[0]) < 10 and \
+                       (int(extra_dice_arg[1]) > 0 and int(extra_dice_arg[1]) <= 100):
                         session.state['n_extra_dices'] = int(extra_dice_arg[0])
                         session.state['n_extra_faces'] = int(extra_dice_arg[1])
                     elif int(extra_dice_arg[0]) <= 0:
