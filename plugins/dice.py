@@ -31,9 +31,10 @@ async def roll(session: CommandSession):
     # extra value
     extra_val_str = ""
     if('extra_value' in session.state.keys()):
-        extra_val_str = "+" + str(session.state['extra_value'])
+        extra_val_str = str(session.state['extra_value'])
 
-    total_str = base_str + extra_str + extra_val_str
+    total_str = base_str + "+" + extra_str + "+" + extra_val_str
+    print(session.state['hd'])
     if session.state['hd'] is True:
         session.finish(total_str, ensure_private=True)
     else:
@@ -45,6 +46,7 @@ async def _(session: CommandSession):
     raw_command = session.event['raw_message']
     stripped_arg = session.current_arg_text.strip()
     session.state['hd'] = False
+    print(raw_command)
 
     # hidden dice or not
     raw_command = raw_command.replace(raw_command[0], '', 1)
@@ -142,6 +144,7 @@ async def _(session: CommandSession):
     raw_command = session.event['raw_message']
     stripped_arg = session.current_arg_text.strip()
 
+    print(raw_command)    
     if(raw_command[0] != '!' and raw_command[0] != '！'):
         session.finish('修改默认骰子需要以!或！作为命令头')
 
