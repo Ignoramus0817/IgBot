@@ -63,7 +63,7 @@ async def _(session: CommandSession):
 
     # use certain dices
     if stripped_arg:
-        plus_list = re.findall('+', stripped_arg)
+        plus_list = re.findall(r'\+', stripped_arg)
 
         # '+' can only appears once
         if len(plus_list) > 1:

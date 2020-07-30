@@ -1,9 +1,9 @@
 #### Dice
 
 1. “dice” only support “!” as a start
-    1.  if raw_input start with *cdd, finish the session if it is not “!cdd” or “！cdd”
+    1.  if raw_input start with *dice, finish the session if it is not “!dice” or “！dice”
     2. change default dice, global variable `DEFAULT_DICE = 100` 
-    3.  **! cdd can only be run by kp   {@TODO: bind a user as kp}**
+    3.  **! dice can only be run by kp   {@TODO: bind a user as kp}**
 2. else , i.e. “.rd” and others :
     1.  strip command to get args
     2. if no args:
