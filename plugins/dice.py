@@ -117,7 +117,11 @@ async def _(session: CommandSession):
                 else:
                     session.finish('请输入正确的加值数目')
             else:
-                if extra_dice_arg[0].isdigit() and extra_dice_arg[1].isdigit():
+                if(extra_dice_arg[0] == ''):
+                    session.finish('请指定正确的附加骰子数目')
+                elif(extra_dice_arg[1] == ''):
+                    session.finish('请指定正确的附加骰子种类')
+                elif extra_dice_arg[0].isdigit() and extra_dice_arg[1].isdigit():
                     if int(extra_dice_arg[0]) > 0 and (int(extra_dice_arg[1]) > 0 and int(extra_dice_arg[1]) <= 100):
                         session.state['n_extra_dices'] = int(extra_dice_arg[0])
                         session.state['n_extra_faces'] = int(extra_dice_arg[1])
