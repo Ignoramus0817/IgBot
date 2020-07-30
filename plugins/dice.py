@@ -49,7 +49,6 @@ async def _(session: CommandSession):
     # hidden dice or not
     raw_command = re.sub(r'\[.*\]', '', raw_command).strip()
     raw_command = re.sub('[/!！\\.]', '', raw_command).strip()
-    print(raw_command)
     if re.match('hd', raw_command) or re.match('rhd', raw_command):
         session.state['hd'] = True
 
@@ -107,7 +106,9 @@ async def _(session: CommandSession):
                 session.finish('请输入完整的基准骰子参数')
 
             # extra dice or value
-            if len(extra_dice_arg) == 1:
+            if len(extra_dice_arg) == 0:
+                session.finish('请输入附加参数')
+            elif len(extra_dice_arg) == 1:
                 if(extra_dice_arg[0].isdigit()):
                     if int(extra_dice_arg[0]) > 0 and int(extra_dice_arg[0]) <= 100:
                         session.state['extra_value'] = int(extra_dice_arg[0])
