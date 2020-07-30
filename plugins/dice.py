@@ -79,6 +79,10 @@ async def _(session: CommandSession):
                 if int(splited[0]) > 0 and int(splited[1]) > 0 and int(splited[1]) <= 100:
                     session.state['n_dices'] = int(splited[0])
                     session.state['n_faces'] = int(splited[1])
+                elif int(splited[0]) <= 0 and int(splited[1]) > 0:
+                    session.finish('请指定正确的骰子数目')
+                else:
+                    session.finish('请指定正确的骰子种类')
             else:
                 session.finish('请输入正确的骰点参数')
             return
