@@ -21,7 +21,7 @@ async def roll(session: CommandSession):
     # extra dice result
     extra_res = []
     extra_str = ""
-    if(session.state['n_extra_dices'] and session.state['n_extra_faces']):
+    if 'n_extra_dices' in session.state.keys() and 'n_extra_faces' in session.state.keys():
         n_extra_dices = session.state['n_extra_dices']
         n_extra_faces = session.state['n_extra_faces']
         for i in range(n_extra_dices):
@@ -30,7 +30,7 @@ async def roll(session: CommandSession):
 
     # extra value
     extra_val_str = ""
-    if(session.state['extra_value']):
+    if('extra_value' in session.state.keys()):
         extra_val_str = "+" + str(session.state['extra_value'])
 
     total_str = base_str + extra_str + extra_val_str
@@ -44,6 +44,7 @@ async def roll(session: CommandSession):
 async def _(session: CommandSession):
     raw_command = session.event['raw_message']
     stripped_arg = session.current_arg_text.strip()
+    session.state['hd'] = False
 
     # hidden dice or not
     raw_command = raw_command.replace(raw_command[0], '', 1)
