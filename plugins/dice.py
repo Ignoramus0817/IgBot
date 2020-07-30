@@ -26,14 +26,14 @@ async def roll(session: CommandSession):
         n_extra_faces = session.state['n_extra_faces']
         for i in range(n_extra_dices):
             extra_res.append(random.randint(1, n_extra_faces))
-        extra_str = "+".join('%s' % id for id in extra_res)
+        extra_str = "+" + "+".join('%s' % id for id in extra_res)
 
     # extra value
     extra_val_str = ""
     if('extra_value' in session.state.keys()):
-        extra_val_str = str(session.state['extra_value'])
+        extra_val_str = "+" + str(session.state['extra_value'])
 
-    total_str = base_str + "+" + extra_str + "+" + extra_val_str
+    total_str = base_str + extra_str + extra_val_str
     if session.state['hd'] is True:
         session.finish(total_str, ensure_private=True)
     else:
