@@ -29,11 +29,13 @@ async def roll(session: CommandSession):
         extra_str = "+" + "+".join('%s' % id for id in extra_res)
 
     # extra value
+    extra_val = 0
     extra_val_str = ""
     if('extra_value' in session.state.keys()):
         extra_val_str = "+" + str(session.state['extra_value'])
+        extra_val = session.state['extra_value']
 
-    total_val = sum(base_res) + sum(extra_res) + session.state['extra_value']
+    total_val = sum(base_res) + sum(extra_res) + extra_val
     total_str = base_str + extra_str + extra_val_str + "=" + str(total_val)
     if session.state['hd'] is True:
         session.finish(total_str, ensure_private=True)
