@@ -34,7 +34,6 @@ async def roll(session: CommandSession):
         extra_val_str = str(session.state['extra_value'])
 
     total_str = base_str + "+" + extra_str + "+" + extra_val_str
-    print(session.state['hd'])
     if session.state['hd'] is True:
         session.finish(total_str, ensure_private=True)
     else:
@@ -48,7 +47,8 @@ async def _(session: CommandSession):
     session.state['hd'] = False
 
     # hidden dice or not
-    raw_command = re.sub(r'\[.*\][/!！\.]', '', raw_command).strip()
+    raw_command = re.sub(r'\[.*\]', '', raw_command).strip()
+    raw_command = re.sub('[/!！\\.]', '', raw_command).strip()
     print(raw_command)
     if re.match('hd', raw_command) or re.match('rhd', raw_command):
         session.state['hd'] = True
